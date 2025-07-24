@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>میرا افیلیئیٹ اسٹور - صارف کے ڈیٹا کے ساتھ</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS for styling -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Noto Nastaliq Urdu', serif; /* اردو فونٹ */
+        }
+        .product-card {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            transition: transform 0.2s ease-in-out; /* ہوور ایفیکٹ کے لیے ٹرانزیشن */
+        }
+        .product-card:hover {
+            transform: translateY(-5px); /* ہوور پر کارڈ کو تھوڑا اوپر اٹھائیں */
+        }
+        .btn-buy {
+            background-color: #ff5722; /* بٹن کا رنگ */
+            color: white;
+            font-weight: bold;
+            border-radius: 8px; /* بٹن کے کونے گول کریں */
+            transition: background-color 0.3s ease; /* ہوور ایفیکٹ کے لیے ٹرانزیشن */
+        }
+        .btn-buy:hover {
+            background-color: #e64a19; /* ہوور پر بٹن کا رنگ گہرا کریں */
+            color: white;
+        }
+        .search-bar {
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 15px;
+            background-color: white;
+        }
+        .search-bar input {
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            padding: 10px 15px;
+        }
+        .user-info {
+            background-color: #e9ecef;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .user-info strong {
+            color: #007bff;
+        }
+        .message-box {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            display: none; /* By default hidden */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <!-- User Info Section -->
+    <div class="user-info">
+        <p>آپ کی صارف ID: <strong id="userIdDisplay">لوڈ ہو رہا ہے...</strong></p>
+    </div>
+
+    <!-- Message Box for Notifications -->
+    <div id="messageBox" class="message-box"></div>
+
+    <h2 class="text-center mb-5">📦 ہمارے بہترین پراڈکٹس</h2>
+
+    <!-- Search Bar Section -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="input-group search-bar">
+                <input type="text" id="searchInput" class="form-control" placeholder="پراڈکٹ تلاش کریں..." aria-label="پراڈکٹ تلاش کریں">
+                <button class="btn btn-primary" type="button" id="searchButton">تلاش کریں</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <div class="row" id="productsContainer">
+
+        <!-- Product 1 -->
+        <div class="col-md-4 product-item">
+            <div class="card product-card">
+                <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1a0?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="ایئربڈز">
+                <div class="card-body">
+                    <h5 class="card-title">وائرلیس ایئربڈز</h5>
+                    <p class="card-text">اعلیٰ معیار کی آواز اور لمبی بیٹری لائف۔</p>
+                    <a href="https://your-affiliate-link.com/earbuds" class="btn btn-buy w-100" target="_blank">ابھی خریدیں</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="col-md-4 product-item">
+            <div class="card product-card">
+                <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="سمارٹ واچ">
+                <div class="card-body">
+                    <h5 class="card-title">سمارٹ واچ</h5>
+                    <p class="card-text">ہیلتھ مانیٹرنگ اور کالنگ فیچرز کے ساتھ۔</p>
+                    <a href="https://your-affiliate-link.com/smartwatch" class="btn btn-buy w-100" target="_blank">ابھی خریدیں</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="col-md-4 product-item">
+            <div class="card product-card">
+                <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="ہیڈ فونز">
+                <div class="card-body">
+                    <h5 class="card-title">بی ٹی ہیڈفونز</h5>
+                    <p class="card-text">کوالٹی بیس اور آرام دہ ڈیزائن۔</p>
+                    <a href="https://your-affiliate-link.com/headphones" class="btn btn-buy w-100" target="_blank">ابھی خریدیں</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 4 (New Product Example) -->
+        <div class="col-md-4 product-item">
+            <div class="card product-card">
+                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="پاور بینک">
+                <div class="card-body">
+                    <h5 class="card-title">پاور بینک</h5>
+                    <p class="card-text">تیز چارجنگ اور پورٹیبل ڈیزائن۔</p>
+                    <a href="https://your-affiliate-link.com/powerbank" class="btn btn-buy w-100" target="_blank">ابھی خریدیں</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 5 (New Product Example) -->
+        <div class="col-md-4 product-item">
+            <div class="card product-card">
+                <img src="https://images.unsplash.com/photo-1610452382903-51172a39626b?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="لیپ ٹاپ">
+                <div class="card-body">
+                    <h5 class="card-title">الٹرا بک لیپ ٹاپ</h5>
+                    <p class="card-text">ہلکا پھلکا اور طاقتور کارکردگی۔</p>
+                    <a href="https://your-affiliate-link.com/laptop" class="btn btn-buy w-100" target="_blank">ابھی خریدیں</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 6 (New Product Example) -->
+        <div class="col-md-4 product-item">
+            <div class="card product-card">
+                <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="گیمنگ ماؤس">
+                <div class="card-body">
+                    <h5 class="card-title">گیمنگ ماؤس</h5>
+                    <p class="card-text">اعلیٰ درستگی اور حسب ضرورت بٹن۔</p>
+                    <a href="https://your-affiliate-link.com/gamingmouse" class="btn btn-buy w-100" target="_blank">ابھی خریدیں</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="text-center text-muted mt-5">
+        © 2025 میرا افیلیئیٹ اسٹور
+    </footer>
+</div>
+
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script type="module">
+    // Firebase SDKs کو امپورٹ کریں
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, addDoc, collection, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // عالمی متغیرات کو استعمال کریں
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+    const firebaseConfig = JSON.parse(__firebase_config);
+
+    // Firebase کو initialize کریں
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    let userId = null; // صارف کی ID
+    let isAuthReady = false; // تصدیق کی حالت کو ٹریک کرنے کے لیے
+
+    const userIdDisplay = document.getElementById('userIdDisplay');
+    const messageBox = document.getElementById('messageBox');
+
+    // ایک پیغام دکھانے کا فنکشن (alert() کی بجائے)
+    function showMessage(message, type = 'success') {
+        messageBox.textContent = message;
+        messageBox.className = `message-box alert alert-${type}`;
+        messageBox.style.display = 'block';
+        setTimeout(() => {
+            messageBox.style.display = 'none';
+        }, 5000); // 5 سیکنڈ کے بعد پیغام چھپا دیں
+    }
+
+    // صارف کی تصدیق کی حالت سنیں
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            // صارف لاگ ان ہے
+            userId = user.uid;
+            userIdDisplay.textContent = userId;
+            isAuthReady = true;
+            console.log("صارف لاگ ان ہے:", userId);
+            // یہاں آپ صارف کی سرچ ہسٹری لوڈ کر سکتے ہیں اگر ضرورت ہو
+            loadUserSearchHistory(userId);
+        } else {
+            // صارف لاگ ان نہیں ہے، گمنام طور پر سائن ان کریں یا سائن ان کا آپشن دکھائیں
+            try {
+                if (typeof __initial_auth_token !== 'undefined') {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth); // گمنام سائن ان
+                }
+            } catch (error) {
+                console.error("سائن ان میں خرابی:", error);
+                userIdDisplay.textContent = "لاگ ان نہیں ہوا";
+                showMessage("سائن ان میں خرابی پیش آئی۔", "danger");
+            }
+        }
+    });
+
+    // صارف کی سرچ ہسٹری کو Firestore میں محفوظ کرنے کا فنکشن
+    async function saveSearchHistory(uid, queryText) {
+        if (!isAuthReady || !uid) {
+            console.warn("Firestore تیار نہیں ہے یا صارف لاگ ان نہیں ہے۔ سرچ ہسٹری محفوظ نہیں کی جا سکتی۔");
+            showMessage("سرچ ہسٹری محفوظ نہیں ہو سکی (لاگ ان کی ضرورت ہے)", "warning");
+            return;
+        }
+        if (!queryText.trim()) {
+            return; // خالی سرچ کو محفوظ نہ کریں
+        }
+
+        try {
+            // نجی ڈیٹا کا پاتھ: /artifacts/{appId}/users/{userId}/searchHistory
+            const searchHistoryCollectionRef = collection(db, `artifacts/${appId}/users/${uid}/searchHistory`);
+            await addDoc(searchHistoryCollectionRef, {
+                query: queryText,
+                timestamp: new Date()
+            });
+            console.log("سرچ ہسٹری کامیابی سے محفوظ ہو گئی:", queryText);
+            // showMessage("سرچ ہسٹری محفوظ ہو گئی!", "success"); // ہر سرچ پر پیغام نہ دکھائیں
+        } catch (error) {
+            console.error("سرچ ہسٹری محفوظ کرنے میں خرابی:", error);
+            showMessage("سرچ ہسٹری محفوظ کرنے میں خرابی پیش آئی۔", "danger");
+        }
+    }
+
+    // صارف کی سرچ ہسٹری لوڈ کرنے کا فنکشن (ریئل ٹائم اپ ڈیٹس کے ساتھ)
+    function loadUserSearchHistory(uid) {
+        if (!isAuthReady || !uid) {
+            console.warn("Firestore تیار نہیں ہے یا صارف لاگ ان نہیں ہے۔ سرچ ہسٹری لوڈ نہیں کی جا سکتی۔");
+            return;
+        }
+
+        // نجی ڈیٹا کا پاتھ: /artifacts/{appId}/users/{userId}/searchHistory
+        const searchHistoryCollectionRef = collection(db, `artifacts/${appId}/users/${uid}/searchHistory`);
+        // orderBy() استعمال کرنے سے گریز کریں کیونکہ اس کے لیے انڈیکس کی ضرورت پڑ سکتی ہے
+        // const q = query(searchHistoryCollectionRef, orderBy('timestamp', 'desc'), limit(5));
+
+        onSnapshot(searchHistoryCollectionRef, (snapshot) => {
+            const history = [];
+            snapshot.forEach((doc) => {
+                history.push(doc.data());
+            });
+            // یہاں آپ ہسٹری کو UI پر دکھا سکتے ہیں، مثال کے طور پر ایک فہرست میں
+            console.log("صارف کی سرچ ہسٹری:", history.sort((a, b) => b.timestamp.toDate() - a.timestamp.toDate())); // جاوا اسکرپٹ میں ترتیب دیں
+            // showMessage(`آپ کی ${history.length} سرچز لوڈ ہو گئی ہیں۔`, "info");
+        }, (error) => {
+            console.error("سرچ ہسٹری لوڈ کرنے میں خرابی:", error);
+            showMessage("سرچ ہسٹری لوڈ کرنے میں خرابی پیش آئی۔", "danger");
+        });
+    }
+
+    // سرچ فنکشن
+    function performSearch() {
+        const searchInput = document.getElementById('searchInput');
+        const queryText = searchInput.value.toLowerCase().trim(); // سرچ ان پٹ کی ویلیو لیں اور اسے چھوٹے حروف میں تبدیل کریں
+
+        if (queryText) {
+            // سرچ ہسٹری کو محفوظ کریں
+            saveSearchHistory(userId, queryText);
+        }
+
+        const productItems = document.querySelectorAll('.product-item'); // تمام پراڈکٹ آئٹمز حاصل کریں
+
+        productItems.forEach(item => {
+            const title = item.querySelector('.card-title').textContent.toLowerCase(); // پراڈکٹ کا عنوان
+            const description = item.querySelector('.card-text').textContent.toLowerCase(); // پراڈکٹ کی تفصیل
+
+            // اگر عنوان یا تفصیل سرچ ان پٹ سے ملتی ہے تو پراڈکٹ دکھائیں، ورنہ چھپا دیں
+            if (queryText === "" || title.includes(queryText) || description.includes(queryText)) {
+                item.style.display = 'block'; // پراڈکٹ دکھائیں
+            } else {
+                item.style.display = 'none'; // پراڈکٹ چھپا دیں
+            }
+        });
+    }
+
+    // سرچ بٹن پر کلک کرنے پر سرچ فنکشن کال کریں
+    document.getElementById('searchButton').addEventListener('click', performSearch);
+
+    // سرچ ان پٹ میں انٹر دبانے پر سرچ فنکشن کال کریں
+    document.getElementById('searchInput').addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            performSearch();
+        }
+    });
+
+    // جب صفحہ لوڈ ہو تو سرچ فنکشن کو بھی کال کریں تاکہ اگر کوئی پہلے سے سرچ موجود ہو تو وہ فلٹر ہو جائے
+    // اور Firebase کی تصدیق کے بعد سرچ ہسٹری لوڈ ہو
+    window.onload = () => {
+        // Firebase Auth state change listener ہی userId کو سیٹ کرے گا اور loadUserSearchHistory کو کال کرے گا
+        performSearch(); // ابتدائی طور پر تمام پراڈکٹس دکھائیں
+    };
+</script>
+
+</body>
+</html>
